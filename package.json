@@ -1,0 +1,28 @@
+{
+  "name": "online-food-delivery-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanaamariya/Online-Food-Delivery-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sanaamariya/Online-Food-Delivery-App/issues"
+  },
+  "homepage": "https://github.com/sanaamariya/Online-Food-Delivery-App#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.3.0"
+  }
+}
