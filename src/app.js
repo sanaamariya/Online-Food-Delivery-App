@@ -1,22 +1,31 @@
 const express = require('express');
 const app = express();
 app.use(express.json());
-const menu = [
-{ id: 1, name: 'Margherita Pizza', price: 250 },
-{ id: 2, name: 'Chicken Biryani', price: 300 },
-{ id: 3, name: 'Veg Burger', price: 120 },
-];
-let orders = [];
-app.get('/menu', (req, res) => res.json(menu));
-app.post('/order', (req, res) => {
 
-const { itemId, quantity } = req.body;
-const item = menu.find(m => m.id === itemId);
-if (!item) return res.status(404).json({ error: 'Item not found' });
-const order = { orderId: orders.length + 1, item: item.name, quantity, total:
-item.price * quantity };
-orders.push(order);
-res.status(201).json(order);
+const products = [
+  { id: 1, name: 'Wireless Headphones', price: 2500 },
+  { id: 2, name: 'Running Shoes', price: 3200 },
+  { id: 3, name: 'Laptop Backpack', price: 1400 },
+];
+
+let orders = [];
+
+app.get('/products', (req, res) => res.json(products));
+
+app.post('/order', (req, res) => {
+  const { productId, quantity } = req.body;
+  const product = products.find(p => p.id === productId);
+  if (!product) return res.status(404).json({ error: 'Product not found' });
+  const order = {
+    orderId: orders.length + 1,
+    product: product.name,
+    quantity,
+    total: product.price * quantity,
+  };
+  orders.push(order);
+  res.status(201).json(order);
 });
+
 app.get('/orders', (req, res) => res.json(orders));
+
 module.exports = app;
